@@ -17,4 +17,58 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!-- My Custom Style -->
+    <style name="AsisLayout" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="AsisLayout.CardView">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+    </style>
+    <style name="AsisLayout.CardViewText">
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginEnd">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginStart">@dimen/activity_horizontal_margin</item>
+    </style>
+    <style name="AsisLayout.CardViewText.Title">
+        <item name="android:layout_marginTop">@dimen/activity_vertical_margin</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AsisLayout.CustomBackground">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+        <item name="android:background">#4D000000</item>
+    </style>
+
+    <style name="AsisLayout.TextContent" parent="@style/TextAppearance.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="AsisLayout.TextContent.Small">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+    </style>
+    <style name="AsisLayout.TextContent.Small.White">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AsisLayout.TextContent.Medium">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+    </style>
+    <style name="AsisLayout.TextContent.Medium.White">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    <style name="AsisLayout.TextContent.Medium.White.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="AsisLayout.TextContent.Normal">
+        <item name="android:padding">@dimen/activity_horizontal_margin</item>
+    </style>
+
 </resources>

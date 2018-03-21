@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.asiscode.myrecyclerviewsubmission.activity.DetailActivity">
+
+    <LinearLayout
+        style="@style/AsisLayout"
+        android:orientation="vertical">
+
+        <FrameLayout
+            style="@style/AsisLayout">
+
+            <ImageView
+                style="@style/AsisLayout"
+                android:id="@+id/img_item_photo"
+                android:minHeight="220dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:contentDescription="@string/imagephoto" />
+            <LinearLayout
+                style="@style/AsisLayout.CustomBackground">
+                <TextView
+                    style="@style/AsisLayout.TextContent.Medium.White.Bold"
+                    android:id="@+id/tv_item_name"
+                    android:text="@string/food_name"
+                    android:gravity="center_vertical"/>
+                <TextView
+                    style="@style/AsisLayout.TextContent.Small.White"
+                    android:id="@+id/tv_item_price"
+                    android:text="@string/food_price"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <TextView
+            style="@style/AsisLayout.TextContent.Normal"
+            android:id="@+id/tv_item_description"
+            android:text="Halaman Detail"/>
+    </LinearLayout>
+
+</ScrollView>

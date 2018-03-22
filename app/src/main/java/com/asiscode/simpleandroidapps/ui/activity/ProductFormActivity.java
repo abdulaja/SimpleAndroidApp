@@ -122,6 +122,7 @@ public class ProductFormActivity extends AppCompatActivity {
                     if(response.code()==200) {
                         ProductResponse res = response.body();
                         if(res.getAbstractResponse().getResponseStatus().equals("000")) {
+                            setResult(RESULT_OK);
                             finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "Message : " + res.getAbstractResponse().getResponseMessage(), Toast.LENGTH_SHORT).show();

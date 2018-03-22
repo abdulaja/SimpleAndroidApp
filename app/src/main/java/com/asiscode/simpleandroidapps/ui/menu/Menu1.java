@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -28,6 +29,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -57,7 +60,7 @@ public class Menu1 extends Fragment {
                         .setAction("Action", null).show();*/
                 Intent intent = new Intent(getActivity(), ProductFormActivity.class);
                 intent.putExtra("isEdit", false);
-                startActivity(intent);
+                getActivity().startActivityForResult(intent, 200);
             }
         });
 
@@ -124,13 +127,23 @@ public class Menu1 extends Fragment {
                 Intent intent = new Intent(getActivity(), ProductFormActivity.class);
                 intent.putExtra("isEdit", true);
                 intent.putExtra("product", product);
-                startActivity(intent);
+                startActivityForResult(intent, 000);
             }
         });
     }
 
     private void showSelectedItem(Product product) {
         Toast.makeText(getActivity(), "Kamu memilih " + product.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (/*(requestCode == 200) && */(resultCode == RESULT_OK)) {
+            // recreate your fragment here
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.detach(this).attach(this).commit();
+        }
     }
 
 }

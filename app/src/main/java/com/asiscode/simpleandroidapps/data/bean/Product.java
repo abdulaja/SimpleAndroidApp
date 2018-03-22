@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Product implements Parcelable {
     @SerializedName("id")
-    private Long id;
+    private Integer id;
     @SerializedName("name")
     private String name;
     @SerializedName("category")
@@ -19,22 +19,17 @@ public class Product implements Parcelable {
     @SerializedName("type")
     private String type;
     @SerializedName("stock")
-    private Long stock;
+    private Integer stock;
+
+    public Product() {
+    }
 
     protected Product(Parcel in) {
-        if (in.readByte() == 0) {
-            id = null;
-        } else {
-            id = in.readLong();
-        }
+        id = in.readInt();
         name = in.readString();
         category = in.readString();
         type = in.readString();
-        if (in.readByte() == 0) {
-            stock = null;
-        } else {
-            stock = in.readLong();
-        }
+        stock = in.readInt();
     }
 
     public static final Creator<Product> CREATOR = new Creator<Product>() {
@@ -49,11 +44,11 @@ public class Product implements Parcelable {
         }
     };
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -81,25 +76,25 @@ public class Product implements Parcelable {
         this.type = type;
     }
 
-    public Long getStock() {
+    public Integer getStock() {
         return stock;
     }
 
-    public void setStock(Long stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
 
     @Override
     public int describeContents() {
-        return 0;
+        return hashCode();
     }
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeLong(id);
+        parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeString(category);
         parcel.writeString(type);
-        parcel.writeLong(stock);
+        parcel.writeInt(stock);
     }
 }

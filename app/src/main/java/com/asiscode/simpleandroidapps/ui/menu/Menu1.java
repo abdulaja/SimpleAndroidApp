@@ -1,8 +1,10 @@
 package com.asiscode.simpleandroidapps.ui.menu;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import com.asiscode.simpleandroidapps.data.request.ProductRequest;
 import com.asiscode.simpleandroidapps.data.response.ProductResponse;
 import com.asiscode.simpleandroidapps.network.APIInstance;
 import com.asiscode.simpleandroidapps.network.APIInterface;
+import com.asiscode.simpleandroidapps.ui.activity.ProductFormActivity;
 
 import java.util.List;
 
@@ -45,6 +48,18 @@ public class Menu1 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //you can set the title for your toolbar here for different fragments different titles
         getActivity().setTitle("Product List");
+
+        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                Intent intent = new Intent(getActivity(), ProductFormActivity.class);
+                intent.putExtra("isEdit", false);
+                startActivity(intent);
+            }
+        });
 
         rvCategory = getActivity().findViewById(R.id.rv_category);
         rvCategory.setHasFixedSize(true);
@@ -104,10 +119,12 @@ public class Menu1 extends Fragment {
         ItemClickSupport.addTo(rvCategory).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View view) {
-                showSelectedItem(products.get(position));
-                /*Intent intent = new Intent(getActivity(), FoodDetailActivity.class);
-                intent.putExtra("product", products.get(position));
-                startActivity(intent);*/
+                Product product = products.get(position);
+                showSelectedItem(product);
+                Intent intent = new Intent(getActivity(), ProductFormActivity.class);
+                intent.putExtra("isEdit", true);
+                intent.putExtra("product", product);
+                startActivity(intent);
             }
         });
     }

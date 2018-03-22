@@ -1,5 +1,6 @@
 package com.asiscode.simpleandroidapps.network;
 
+import com.asiscode.simpleandroidapps.data.bean.Product;
 import com.asiscode.simpleandroidapps.data.request.LoginRequest;
 import com.asiscode.simpleandroidapps.data.request.ProductRequest;
 import com.asiscode.simpleandroidapps.data.response.LoginResponse;
@@ -20,5 +21,11 @@ public interface APIInterface {
 
     @POST("product/getByParam")
     Call<ProductResponse> getProducts(@Body ProductRequest request);
+
+    @POST("product/create")
+    Call<ProductResponse> saveProduct(@Body Product request);
+
+    @POST("product/update")
+    Call<ProductResponse> updateProduct(@Body Product request);
 
 }

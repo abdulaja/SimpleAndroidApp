@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,8 +15,9 @@ import android.view.MenuItem;
 import com.asiscode.simpleandroidapps.R;
 import com.asiscode.simpleandroidapps.ui.menu.Menu1;
 import com.asiscode.simpleandroidapps.ui.menu.Menu2;
+import com.asiscode.simpleandroidapps.ui.menu.ProfileFragmnet;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_menu2:
                 fragment = new Menu2();
+                break;
+            case R.id.nav_menu3:
+                fragment = new ProfileFragmnet();
                 break;
         }
 

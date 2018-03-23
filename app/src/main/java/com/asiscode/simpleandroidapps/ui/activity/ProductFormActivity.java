@@ -2,7 +2,6 @@ package com.asiscode.simpleandroidapps.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,14 +10,13 @@ import android.widget.Toast;
 import com.asiscode.simpleandroidapps.R;
 import com.asiscode.simpleandroidapps.data.bean.Product;
 import com.asiscode.simpleandroidapps.data.response.ProductResponse;
-import com.asiscode.simpleandroidapps.network.APIInstance;
-import com.asiscode.simpleandroidapps.network.APIInterface;
+import com.asiscode.simpleandroidapps.ui.BaseActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProductFormActivity extends AppCompatActivity {
+public class ProductFormActivity extends BaseActivity {
     private TextView tvId;
     private TextView tvName;
     private TextView tvCategory;
@@ -96,8 +94,6 @@ public class ProductFormActivity extends AppCompatActivity {
             // form field with an error.
             focusView.requestFocus();
         } else {
-            APIInterface api = APIInstance.getRetrofitInstance().create(APIInterface.class);
-
             Product product = new Product();
             product.setId(tvId.getText().toString().length() > 0 ? Integer.parseInt(tvId.getText().toString()) : null);
             product.setName(tvName.getText().toString());
@@ -109,11 +105,11 @@ public class ProductFormActivity extends AppCompatActivity {
             if (product.getId() == null) {
                 Snackbar.make(view, "Save " + product.getName(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                responseCall = api.saveProduct(product);
+                responseCall = getBaseApi().saveProduct(product);
             } else {
                 Snackbar.make(view, "Update " + product.getName(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                responseCall = api.updateProduct(product);
+                responseCall = getBaseApi().updateProduct(product);
             }
 
             responseCall.enqueue(new Callback<ProductResponse>() {

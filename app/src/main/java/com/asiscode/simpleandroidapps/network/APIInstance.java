@@ -12,6 +12,8 @@ public class APIInstance {
     private static Retrofit retrofit;
     private static final String BASE_URL = "http://192.168.90.17:8080/rest-api/";
 
+    private APIInterface baseAPI;
+
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new retrofit2.Retrofit.Builder()
@@ -20,6 +22,14 @@ public class APIInstance {
                     .build();
         }
         return retrofit;
+    }
+
+    public APIInstance() {
+        this.baseAPI = getRetrofitInstance().create(APIInterface.class);
+    }
+
+    public APIInterface getBaseAPI() {
+        return this.baseAPI;
     }
 
 }

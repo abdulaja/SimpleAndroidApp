@@ -22,6 +22,7 @@ import com.asiscode.simpleandroidapps.data.request.ProductRequest;
 import com.asiscode.simpleandroidapps.data.response.ProductResponse;
 import com.asiscode.simpleandroidapps.network.APIInstance;
 import com.asiscode.simpleandroidapps.network.APIInterface;
+import com.asiscode.simpleandroidapps.ui.MainActivity;
 import com.asiscode.simpleandroidapps.ui.activity.ProductFormActivity;
 
 import java.util.List;
@@ -90,7 +91,7 @@ public class Menu1 extends Fragment {
                 Toast.makeText(getActivity(), "Please Check Your Connection", Toast.LENGTH_SHORT).show();
             }
         });*/
-        Call<ProductResponse> responseCall = api.getProducts(new ProductRequest());
+        Call<ProductResponse> responseCall = ((MainActivity)getActivity()).getBaseApi().getProducts(new ProductRequest());
         responseCall.enqueue(new Callback<ProductResponse>() {
             @Override
             public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {

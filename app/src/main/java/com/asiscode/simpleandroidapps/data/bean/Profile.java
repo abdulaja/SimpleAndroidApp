@@ -80,7 +80,7 @@ public class Profile {
 
     @Override
     public String toString() {
-        return "Profile{" +
+        return "ProfileFragmnet{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
